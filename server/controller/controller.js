@@ -102,7 +102,7 @@ exports.create = (req, res) => {
 //  retrieve and return all employees / retrieve and return a single employee
 exports.find = (req, res) => {
     const page = req.query.page || 1;
-    const limit = req.query.limit || 5;
+    const limit = req.query.limit || 4;
     const skip = (page - 1) * limit;
     console.log(skip);
 

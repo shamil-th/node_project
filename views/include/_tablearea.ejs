@@ -2,8 +2,8 @@
                 <div class="employeesHeader">
                     <div class="employeesTitle">
                         <h2>Employees List</h2>
-                        <select name="number" id="select">
-                            <option value="1">1</option>
+                        <select name="number" id="select" onchange="listPaginate(value)">
+                            <!-- <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
@@ -12,9 +12,9 @@
                             <option value="7">7</option>
                             <option value="8">8</option>
                             <option value="9">9</option>
-                            <option value="10">10</option>
+                            <option value="10">10</option> -->
                         </select>
-                        <p>of 10</p>
+                        <p id="listCount">of 0</p>
                     </div>
                     <button class="btn filledButton" id="addEmployee">Add Employee</button>
                 </div>

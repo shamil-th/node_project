@@ -90,55 +90,87 @@ function pagenumbervisibletotalPages(pageCount){
 }
 
 // original 
+var totalPages ;
+
 function pagination(pageCount) {
-    pagenumbervisibletotalPages(pageCount);
-    var pgnum = document.getElementById("pagenumbers"); // div element where the pagination buttons are displayed
+    totalPages = pageCount;
+    document.getElementById('listCount').innerText = `of ${pageCount}`;
+
+    // div element where the pagination buttons are displayed
+    let pgnum = document.getElementById("pagenumbers");
+    let listnum = document.getElementById('select');
+
     let temp = '';
+    let list = '';
     for (let i = 1; i <= pageCount; i++) {
+
         temp += `<button class="page-item" id="page${i}">${i}</button>`;
+
+        let isSelected = i === currentPage;
+
+        list += `<option id="listNum${i}" value="${i}" ${isSelected ? 'selected' : ''}>${i}</option>`;
     }
+
     pgnum.innerHTML = temp;
-   
-    for (var i = 1; i <= pageCount; i++) {
+    listnum.innerHTML = list;
+    listnum.value = currentPage;
+
+
+    for (let i = 1; i <= pageCount; i++) {
         (function (pageNumber) {
             const pageCounter = document.getElementById(`page${pageNumber}`);
             pageCounter.addEventListener('click', function (e) {
                 e.preventDefault();
                 currentPage = pageNumber;
                 showEmployees();
+
+                // Update the selected option when a page is clicked
+                // listnum.value = currentPage;
             });
         })(i);
     }
-    let pageLeftButton = document.getElementById("previous");
-    let pageRightButton = document.getElementById("next");
-    // Use CSS to control button visibility
-    if (currentPage === 1) {
+    
+
+    if (currentPage == 1) {
         pageLeftButton.classList.add('hidden');
     } else {
         pageLeftButton.classList.remove('hidden');
     }
-    if (currentPage === pageCount) {
+    if (currentPage == pageCount) {
         pageRightButton.classList.add('hidden');
     } else {
         pageRightButton.classList.remove('hidden');
     }
     
-    pageLeftButton.addEventListener("click", function (e) {
-        e.preventDefault();
-        if (currentPage > 1) {
-            currentPage--;
-            showEmployees();
-        }
-    });
-    pageRightButton.addEventListener("click", function (e) {
-        e.preventDefault();
-        if (currentPage < pageCount) {
-            currentPage++;
-            showEmployees();
-        }
-    });
 }
+
+let pageLeftButton = document.getElementById("previous");
+let pageRightButton = document.getElementById("next");
+
+pageLeftButton.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (currentPage > 1) {
+        currentPage -= 1;
+        showEmployees();
+    }
+});
+
+pageRightButton.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (currentPage < totalPages) {
+        currentPage+=1;
+        showEmployees();
+    }
+});
 //end of pagination
+
+// select list to paginate
+function listPaginate(value) {
+
+    currentPage = value;
+    showEmployees();
+
+}
 
 // employee added successfully Modal
 let empAdded = document.getElementById('empAdded');

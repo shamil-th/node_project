@@ -13,9 +13,8 @@ body{
 .logindesign{
     display: flex;
     align-items: center;
-    gap: 10px;
-    /* border: 2px solid; */
-    height: 100vh;
+    /* gap: 10px; */
+    /* border: 2px solid yellow; */
 }
 .loginBox{
     width: 50%;
@@ -41,10 +40,11 @@ input{
     max-width: 60%;
     gap: 20px;
     font-weight: 500;
+    /* position: relative; */
     /* border: 2px solid; */
 }
 .loginInputFields input{
-padding: 8px 15px;
+padding: 8px 35px 8px 15px;
 }
 .buttonArea{
     width: 100%;
@@ -65,18 +65,23 @@ padding: 8px 15px;
 }
 .backgroundImg{
     width: 50%;
+    /* border: 2px solid rgb(242, 10, 10); */
+    height: 100%;
 }
 .backgroundImg img{
-   max-width: 100%;
-   max-height: 600px;
-   object-fit: contain;
+   width: 100%;
+   object-fit: cover;
 }
 #incorrectPassword{
     color: red;
     display: none;
 }
 .container-fluid{
+    display: flex;
     background-color: #000a25;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 .signupform{
     background-color: rgb(232, 227, 227);
@@ -110,4 +115,30 @@ input:-webkit-autofill:focus {
 .signupform .loginInputFields{
     max-width: unset;
     width: 70%;
+}
+/* .signupImg{
+    height: 100%!important;
+    border: 2px solid white;
+}
+.signupImg img{
+    height: 100%!important;
+
+} */
+.inputBox{
+    position: relative;
+}
+.inputBox i{
+    font-size: 20px;
+    position: absolute;
+    right: 13px;
+    bottom: 0;
+    top: 0;
+    transform: translateY(50%);
+}
+#lockOpen{
+    display: none;
+    cursor: context-menu;
+}
+#lock{
+    cursor: context-menu;  
 }

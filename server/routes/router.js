@@ -15,6 +15,9 @@ route.get('/login',services.loginRoutes);
 // get render signup page
 route.get('/signup',services.signupRoutes);
 
+route.get('/logout', authenticationController.logout);
+
+
 // Authentication
 // signup
 route.post('/signup', authenticationController.signup);

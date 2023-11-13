@@ -1,0 +1,135 @@
+body{
+    background-color: #000a25;
+}
+#existinguser {
+    display: none;
+}
+
+#alertbox {
+    /* border-radius: 10px; */
+    background-color: #a4205a;
+    /* width: 100%; */
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.hide {
+    visibility: hidden;
+    opacity: 0;
+    left: -33%;
+    width: 0;
+    transition: all 800ms;
+
+}
+
+.show {
+    visibility: visible;
+    opacity: 1;
+    transition: all 800ms;
+    left: 0;
+    width: 100%;
+}
+
+.showborder {
+    border: 1px solid red;
+}
+
+.signupform {
+    padding: 40px 40px 5px 40px;
+}
+
+.signupform .signupSection {
+    margin-bottom: 40px;
+}
+
+.removeborder {
+    border: 1px solid transparent;
+}
+
+.alertsession {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 5s;
+    -webkit-animation: fadeIn 5s;
+    -moz-animation: fadeIn 5s;
+    -o-animation: fadeIn 5s;
+    -ms-animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+#alertbox p {
+    margin-bottom: 0;
+}
+.backgroundImg img{
+    /* width: 100%;
+    object-fit: cover; */
+    height: 100%;
+ }
+.logindesign{
+    box-shadow: 6px 6px 20px 1px rgb(0 0 0 / 19%); 
+    height: 433px;
+
+}
+.signupform{
+    height: 100%;
+}
+.inputBox i{
+color: #000a25;
+}

@@ -15,6 +15,9 @@ async function showEmployees() {
             console.log(data);
 
             renderEmployee(data);
+
+            document.getElementById(`page${currentPage}`).style.boxShadow = '0px 4px 10px 1px rgb(0 0 0 / 19%)';
+
         });
 }
 
@@ -27,9 +30,7 @@ function renderEmployee(data) {
     let employees = data.data;
     var pageCount = Math.ceil(data.length / itemsPerPage);
     pagination(pageCount);
-    // const start = itemsPerPage * (currentPage - 1);
-    // const start = 0;
-    // const end = Math.min(itemsPerPage * currentPage, data.length);
+
     const jStart = (currentPage - 1) * itemsPerPage + 1;
     const end = Math.min(data.length - (currentPage - 1) * itemsPerPage, itemsPerPage);
     for (var i = 0, j = jStart; i < end && j <= data.length; i++, j++) {
@@ -273,15 +274,6 @@ function validation() {
     else {
         document.getElementById('datepickerValidation').style.display = 'block';
     }
-    //     gender 
-    //  let genderRegx = (/^[A-Za-z]/);
-    //  if (genderRegx.test(gender)) {
-    //      document.getElementById('genderValidation').style.display = 'none';
-    //       valError = false;
-    //  }
-    //  else {
-    //      document.getElementById('genderValidation').style.display = 'block';
-    //  }
     //    address 
     let addressRegx = (/^[A-Za-z0-9]/);
     if (addressRegx.test(address)) {

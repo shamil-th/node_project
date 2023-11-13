@@ -1,5 +1,4 @@
 var Logindb = require('../model/loginmodel');
-// const express = require("express");
 const bcrypt = require('bcrypt');
 
 
@@ -16,7 +15,8 @@ exports.signup = async (req, res) => {
     const existingUser = await Logindb.findOne({ name: data.name });
 
     if (existingUser) {
-        res.send("User already exists. Please choose a different username.");
+        res.status(400).json("User already exists. Please choose a different username.");
+        console.log('User already exists. Please choose a different username.');
     } 
     else {
         // hashing password
@@ -36,6 +36,7 @@ exports.signup = async (req, res) => {
 
 // login
 exports.login = async (req, res) => {
+    console.log(req.body.username );
     try {
         const check = await Logindb.findOne({ name: req.body.username });
         if (!check) {
@@ -49,7 +50,7 @@ exports.login = async (req, res) => {
                 res.redirect("/");
             } else {
                 // res.send("wrong password");
-                res.json({msg: "wrong password"})
+                res.send("wrong password")
             }
         }
     } catch {
@@ -57,3 +58,11 @@ exports.login = async (req, res) => {
     }
 }
 
+exports.logout = async (req, res) => {
+    req.session.destroy((err)=>{
+        if(err){
+            console.log(err)
+        }
+        res.redirect("/")
+    });
+}
