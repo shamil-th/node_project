@@ -1,9 +1,18 @@
+
+
+
+let usernameoutline = document.getElementById('userName');
+let passwordoutlineOne = document.getElementById('loginPasswordOne');
+let passwordoutline = document.getElementById('loginPassword');
+let loginBox = document.getElementById('loginBox');
+
 var empreg = document.getElementById('regmdl')
 empreg.addEventListener('click', (e) => {
     e.preventDefault()
 
     var username = document.getElementById('userName').value;
     var password = document.getElementById('loginPassword').value;
+    var confirmPswd = document.getElementById("loginPasswordOne").value;
 
     var newreg = {
         username: username,
@@ -11,24 +20,32 @@ empreg.addEventListener('click', (e) => {
     }
 
     console.log(newreg)
-    if (!username || !password) {
+    if (!username || !password || !confirmPswd) {
 
         let alertbox = document.getElementById('alertbox');
 
         alertbox.classList.remove('hide');
         alertbox.classList.add('show');
 
-        alertbox.innerHTML = `<p class="alertsession signuptext">The fields can't be empty</p>`;
-
-        let usernameoutline = document.getElementById('userName');
-        let passwordoutline = document.getElementById('loginPassword');
+        alertbox.innerHTML = `<p class="alertsession requiredAlert">The fields can't be empty</p>`;
 
         usernameoutline.classList.remove('removeborder');
+        passwordoutlineOne.classList.remove('removeborder');
         passwordoutline.classList.remove('removeborder');
+
         usernameoutline.classList.add('showborder');
+        passwordoutlineOne.classList.add('showborder');
         passwordoutline.classList.add('showborder');
 
         return false;
+    }
+    else if(password!=confirmPswd){
+        alertbox.innerHTML = `<p class="alertsession requiredAlert">password doesn't match</p>`;
+        passwordoutlineOne.classList.remove('removeborder');
+        passwordoutline.classList.remove('removeborder');
+
+        passwordoutlineOne.classList.add('showborder');
+        passwordoutline.classList.add('showborder');
     }
     else {
         fetch('http://localhost:3000/signup', {
@@ -41,10 +58,43 @@ empreg.addEventListener('click', (e) => {
 
             .then((res) => {
                 if (res.ok) {
-                    alert('Account created successfully');
+                    // alert('Account created successfully');
 
                     // Redirect to the login page
-                    window.location.href = "/login";
+                    // window.location.href = "/login";
+                    console.log('created account')
+
+                    loginBox.innerHTML="";
+                    let otp = "";
+                    otp +=`   <div id="emailVerification">
+                    <div class="emailTitle">
+                        <i class="material-symbols-outlined mailLogo">
+                            mail
+                        </i>
+                        <header class="fw-bold">VERIFY YOUR EMAIL ADDRESS</header>
+                    </div>
+                    <hr>
+                    <div class="emailTitle">
+                        <p>A verification code has been sent to</p>
+                        <p class="fw-bold">example@gmail.com</p>
+                    </div>
+                    <p class="emailDef">Please check your inbox and enter the verification code below to verify your
+                        email address.The code will expire in 10:51.</p>
+                    <div class="otpButton">
+                        <div class="otpinput">
+                            <input type="text" class="form-control" id="signupOtp" placeholder="enter otp"
+                                maxlength="4">
+                        </div>
+                        <div class="otpinput">
+                            <button class="otpBtn btn">Confirm</button>
+                        </div>
+                        <div class="otpinput resendOtp">
+                            <a href="#">Resend OTP</a>
+                            <a href="#">Change mail</a>
+                        </div>
+                    </div>
+                </div>`;
+                loginBox.innerHTML = otp;
 
                 } else {
                     return res.json().then((err) => {
@@ -56,15 +106,10 @@ empreg.addEventListener('click', (e) => {
                         alertbox.classList.remove('hide');
                         alertbox.classList.add('show');
 
-                        alertbox.innerHTML = `<p class="alertsession signuptext">User already exists</p>`;
-
-                        let usernameoutline = document.getElementById('userName');
-                        let passwordoutline = document.getElementById('loginPassword');
+                        alertbox.innerHTML = `<p class="alertsession requiredAlert">User already exists</p>`;
 
                         usernameoutline.classList.remove('removeborder');
-                        passwordoutline.classList.remove('removeborder');
                         usernameoutline.classList.add('showborder');
-                        passwordoutline.classList.add('showborder');
                     });
                 }
 
@@ -86,9 +131,11 @@ function removeborders() {
     let usernameoutline = document.getElementById('userName');
     let passwordoutline = document.getElementById('loginPassword');
 
-    usernameoutline.classList.add('removeborder')
-    passwordoutline.classList.add('removeborder')
-    usernameoutline.classList.remove('showborder')
-    passwordoutline.classList.remove('showborder')
-}
+    usernameoutline.classList.add('removeborder');
+    passwordoutlineOne.classList.add('removeborder');
+    passwordoutline.classList.add('removeborder');
 
+    usernameoutline.classList.remove('showborder');
+    passwordoutlineOne.classList.remove('showborder');
+    passwordoutline.classList.remove('showborder');
+}

@@ -12,3 +12,5 @@ function passwordVisibility() {
         paswdLock.type = "password";
     }
   }
+
+  

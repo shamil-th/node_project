@@ -58,6 +58,13 @@ padding: 8px 35px 8px 15px;
     padding: 10px;
 
 }
+.forgotPaswd{
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    display: flex;
+    justify-content: end;
+}
 .signupSection{
     max-width: 100%;
     display: flex;
@@ -83,47 +90,17 @@ padding: 8px 35px 8px 15px;
     justify-content: center;
     align-items: center;
 }
-.signupform{
-    background-color: rgb(232, 227, 227);
-    align-items: center;
-    /* opacity: 0.8; */
-}
-.signuptext{
-    color:  #000a25 ;
-}
+
 :focus-visible{
     outline: inherit;
     background-color: rgb(189, 189, 189);
 }
-.signupbg button{
-    background-color: #000a25;
-}
-.signupbg button:hover{
-    color: rgb(232, 227, 227);
-    opacity: 0.9;
-}
-/* input:-internal-autofill-selected {
-    background-color: red!important;
-    color: red!important;
-    appearance: inherit;
-} */
+
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
   transition: background-color 0s 600000s, color 0s 600000s;
   /* background-color: red; */
 }
-.signupform .loginInputFields{
-    max-width: unset;
-    width: 70%;
-}
-/* .signupImg{
-    height: 100%!important;
-    border: 2px solid white;
-}
-.signupImg img{
-    height: 100%!important;
-
-} */
 .inputBox{
     position: relative;
 }

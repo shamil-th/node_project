@@ -9,6 +9,9 @@ const bcrypt = require("bcrypt");
 const cors = require("cors");
 const session = require("express-session");
 const ejs = require('ejs');
+const nodemailer = require("nodemailer");
+
+
 
 
 const app = express();

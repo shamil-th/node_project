@@ -24,6 +24,9 @@ route.post('/signup', authenticationController.signup);
 // login
 route.post('/login', authenticationController.login);
 
+// verification
+// route.post(/)
+
 // API
 route.post('/api/employees',controller.create);
 route.get('/api/employees',controller.find);

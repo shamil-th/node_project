@@ -46,7 +46,7 @@ function renderEmployee(data) {
         const capitalizedFirstName = emp.firstName.charAt(0).toUpperCase() + emp.firstName.slice(1).toLowerCase();
         const capitalizedLastName = emp.lastName.charAt(0).toUpperCase() + emp.lastName.slice(1).toLowerCase();
         const name = capitalizedFirstName +" "+ capitalizedLastName;
-
+console.log(`${emp.avatar}`);
         output += `
     <tr class="tablerow">
                 <td>#${slNo}</td>
